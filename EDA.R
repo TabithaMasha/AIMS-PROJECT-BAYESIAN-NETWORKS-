@@ -14,3 +14,6 @@ chi_test <- chisq.test(crime_table)
 chi_test
 residuals <- chisq.test(crime_table)$stdres
 print(residuals)
+#rates were calculated manually
+#tables for calculating tables
+crime_table<-table(GPSJS_dataCleaned$variable,GPSJS_dataCleaned$Crime variable)
