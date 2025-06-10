@@ -1,0 +1,177 @@
+net
+{
+    node_size = (80 40);
+    HR_Has_Constraints = "yes";
+    HR_DBN_Num_Slices = "5";
+    HR_Desc = "";
+    HR_OOBN_CheckConsistency = "1";
+    HR_OOBN_FitExpand = "1";
+    HR_Zoom_ZoomFactor = "100";
+    HR_Groups_GroupColors = "";
+    HR_Groups_GroupNames = "";
+    HR_Groups_UserGroupsNo = "0";
+    HR_Utility_Link = "63";
+    HR_Probabilistic_Link = "63";
+    HR_Functional_Link = "63";
+    HR_Binding_Link = "63";
+    HR_Information_Arc = "63";
+    HR_Color_Interface = "21";
+    HR_Color_Instance = "0";
+    HR_Color_DiscreteFunction = "5";
+    HR_Color_Function = "4";
+    HR_Color_Utility = "36";
+    HR_Color_Decision = "17";
+    HR_Color_ContinuousChance = "48";
+    HR_Color_DiscreteChance = "16";
+    HR_Monitor_InitSD = "2";
+    HR_Monitor_Utility_Arrange = "0";
+    HR_Monitor_Variance_Utility = "1";
+    HR_Monitor_Mean_Variance = "1";
+    HR_Monitor_Display_Prob_DD = "0";
+    HR_Monitor_Chance_Utility = "0";
+    HR_Monitor_InitStates = "5";
+    HR_Monitor_OpenGraph = "0";
+    HR_Monitor_GraphPrecision = "100";
+    HR_Monitor_AutoUpdGraph = "0";
+    HR_Compile_MaxMinimalSeparators = "100000";
+    HR_Compile_ApproxEpsilon = "1.0E-5";
+    HR_Compile_Approximate = "0";
+    HR_Compile_SaveToMemory = "0";
+    HR_Compile_Compress = "0";
+    HR_Compile_TriangMethod = "0";
+    HR_Propagate_AutoNormal = "1";
+    HR_Propagate_AutoSum = "1";
+    HR_Propagate_Auto = "1";
+    HR_Font_Italic = "0";
+    HR_Font_Weight = "400";
+    HR_Font_Size = "-12";
+    HR_Font_Name = "javax.swing.plaf.FontUIResource[family=Dialog,name=Dialog,style=bold,size=12]";
+    HR_Grid_GridShow = "0";
+    HR_Grid_GridSnap = "0";
+    HR_Grid_Y = "40";
+    HR_Grid_X = "40";
+}
+
+node ethncity
+{
+    position = (50 324);
+    states = ("Black African" "Coloured" "White" "Indian/Asian");
+    HR_Constraint_sex = "NoLink";
+    HR_Constraint_age_group = "NoLink";
+    HR_Constraint_prov = "Arrow";
+    HR_Constraint_Robbery = "Arrow";
+    HR_Constraint_protection = "Arrow";
+    HR_Constraint_income = "Arrow";
+    HR_Constraint_education_level = "Arrow";
+    HR_Constraint_maritalstatus = "Arrow";
+    HR_LinkGroup = "[maritalstatus:0][education_level:0][income:0][protection:0][Robbery:0][prov:0][age_group:0][sex:0]";
+    HR_LinkMode = "[maritalstatus:0][education_level:0][income:0][protection:0][Robbery:0][prov:0][age_group:0][sex:0]";
+}
+
+node prov
+{
+    position = (196 329);
+    states = ("Western Cape" "Eastern Cape" "Northern Cape" "Free State" "KwaZulu-Natal" "North West" "Gauteng" "Mpumalanga" "Limpopo");
+    HR_Constraint_sex = "NoLink";
+    HR_Constraint_age_group = "NoLink";
+    HR_Constraint_Robbery = "Arrow";
+    HR_Constraint_protection = "Arrow";
+    HR_Constraint_income = "Arrow";
+    HR_Constraint_education_level = "Arrow";
+    HR_Constraint_maritalstatus = "Arrow";
+    HR_LinkGroup = "[ethncity:0][maritalstatus:0][education_level:0][income:0][protection:0][Robbery:0][age_group:0][sex:0]";
+    HR_LinkMode = "[ethncity:0][maritalstatus:0][education_level:0][income:0][protection:0][Robbery:0][age_group:0][sex:0]";
+}
+
+node education_level
+{
+    position = (180 177);
+    states = ("Secondary" "Primary" "Degree" "Vocational" "Noschool" "Other");
+    HR_Constraint_Robbery = "Arrow";
+    HR_Constraint_protection = "Arrow";
+    HR_Constraint_income = "Arrow";
+    HR_Constraint_maritalstatus = "Arrow";
+    HR_LinkGroup = "[maritalstatus:0][income:0][protection:0][Robbery:0]";
+    HR_LinkMode = "[maritalstatus:0][income:0][protection:0][Robbery:0]";
+}
+
+node protection
+{
+    position = (497 182);
+    states = ("No" "Yes");
+}
+
+node sex
+{
+    position = (498 334);
+    states = ("Female" "Male");
+    HR_Constraint_maritalstatus = "NoArrow";
+    HR_Constraint_education_level = "NoArrow";
+    HR_Constraint_income = "NoArrow";
+    HR_Constraint_Robbery = "NoArrow";
+    HR_Constraint_protection = "Arrow";
+    HR_LinkGroup = "[protection:0][Robbery:0][income:0][education_level:0][maritalstatus:0]";
+    HR_LinkMode = "[protection:0][Robbery:0][income:0][education_level:0][maritalstatus:0]";
+}
+
+node age_group
+{
+    position = (365 326);
+    states = ("16-34" "65+" "50-64" "35-49");
+    HR_Constraint_Robbery = "Arrow";
+    HR_Constraint_protection = "Arrow";
+    HR_Constraint_income = "Arrow";
+    HR_Constraint_education_level = "Arrow";
+    HR_Constraint_maritalstatus = "Arrow";
+    HR_LinkGroup = "[maritalstatus:0][education_level:0][income:0][protection:0][Robbery:0]";
+    HR_LinkMode = "[maritalstatus:0][education_level:0][income:0][protection:0][Robbery:0]";
+}
+
+node maritalstatus
+{
+    position = (40 181);
+    states = ("Married" "Single" "Cohabiting" "Divorced" "Separated");
+    HR_Constraint_Robbery = "NoArrow";
+    HR_Constraint_income = "NoLink";
+    HR_LinkGroup = "[prov:0][income:0][Robbery:0]";
+    HR_LinkMode = "[prov:0][income:0][Robbery:0]";
+}
+
+node Robbery
+{
+    position = (271 20);
+    states = ("" "");
+    subtype = number;
+    state_values = (0 1);
+    HR_Constraint_protection = "Arrow";
+    HR_LinkGroup = "[protection:0]";
+    HR_LinkMode = "[protection:0]";
+}
+
+node income
+{
+    position = (355 186);
+    states = ("Employment" "Government Transfers" "Not Applicable" "Property and other income" "Business Income");
+    HR_Constraint_protection = "Arrow";
+    HR_Constraint_Robbery = "Arrow";
+    HR_LinkGroup = "[protection:0][Robbery:0]";
+    HR_LinkMode = "[protection:0][Robbery:0]";
+}
+
+potential (ethncity) {}
+
+potential (prov) {}
+
+potential (education_level) {}
+
+potential (protection) {}
+
+potential (sex) {}
+
+potential (age_group) {}
+
+potential (maritalstatus) {}
+
+potential (Robbery) {}
+
+potential (income) {}
