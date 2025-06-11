@@ -21,8 +21,8 @@ rename_vars <- c(
   "Consumer Fraud" = "Q31past5yrs__4",
   "Others" = "Q31past5yrs__5"
 )
-gpsjs_2020_2021_individual_v1 <- gpsjs_2020_2021_individual_v1 %>%
-  rename(!!!rename_vars)
+
+gpsjs_2020_2021_individual_v1 <- rename(gpsjs_2020_2021_individual_v1, !!!rename_vars)
 #Reducing education categories and creating age group variable
 gpsjs_2020_2021_individual_v1$education_level <- factor(gpsjs_2020_2021_individual_v1$education,
                                                         levels = c("No schooling", "Grade R/0", "Grade 1/Sub A/Class 1", "Grade 2/Sub B/Class 2",
