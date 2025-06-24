@@ -1,2 +1,3 @@
 # AIMS-PROJECT-BAYESIAN-NETWORKS
-This is my thesis
+This is my masters thesis
+
